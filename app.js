@@ -14,7 +14,21 @@
 // 5. 삭제 버튼 클릭 시 삭제 기능 실행
 // 6. 완료 버튼 클릭 시 데이터 DOM 이동 기능 실행
 
-localStorage.setItem('a', 'b');
-const a = localStorage.getItem('a');
+const toDoForm = document.getElementById('todo-form');
+const toDoInput = document.querySelector('#todo-form input');
+const toDoList = document.getElementById('todo-list');
 
-console.log(a);
+function paintToDo(newTodo) {
+  console.log('print', newTodo);
+}
+
+function handleToDoSubmit(event) {
+  // input에 입력하고 enter눌러도 새로고침이 일어나지 않음
+  event.preventDefault();
+  const newTodo = toDoInput.value;
+  // input 값을 지워줌
+  toDoInput.value = '';
+  paintToDo(newTodo);
+}
+
+toDoForm.addEventListener('submit', handleToDoSubmit);
