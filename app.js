@@ -18,11 +18,35 @@ const toDoForm = document.getElementById('todo-form');
 const toDoInput = document.querySelector('#todo-form input');
 const toDoList = document.getElementById('todo-list');
 
+const TODOS_KEY = 'todos';
+
+let toDos = [];
+
+function saveToDos() {
+  // toDos를 string으로 저장
+  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+}
+
+function deleteToDo(event) {
+  // 삭제 하려는 li 선택하여 삭제
+  const li = event.target.parentNode;
+  // paseInt : 문자열을 숫자로 바꿔줌
+  li.remove();
+  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+  saveToDos();
+}
+
 function paintToDo(newTodo) {
   const li = document.createElement('li');
+  li.id = newTodo.id;
   const span = document.createElement('span');
+  span.innerText = newTodo.text;
+  const button = document.createElement('button');
+  button.innerText = '❌';
+  button.addEventListener('click', deleteToDo);
+  // todo-list의 자식으로 li를, li의 자식으로 span, button 생성
   li.appendChild(span);
-  span.innerText = newTodo;
+  li.appendChild(button);
   toDoList.appendChild(li);
 }
 
@@ -32,7 +56,22 @@ function handleToDoSubmit(event) {
   const newTodo = toDoInput.value;
   // input 값을 지워줌
   toDoInput.value = '';
-  paintToDo(newTodo);
+  const newTodoObj = {
+    text: newTodo,
+    id: Date.now(),
+  };
+  toDos.push(newTodoObj);
+  paintToDo(newTodoObj);
+  saveToDos();
 }
 
 toDoForm.addEventListener('submit', handleToDoSubmit);
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if (savedToDos !== null) {
+  const parsedToDos = JSON.parse(savedToDos);
+  toDos = parsedToDos;
+  // 배열에 있는 만큼 함수를 반복하여 실행
+  parsedToDos.forEach(paintToDo);
+}

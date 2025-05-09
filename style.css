@@ -1,6 +1,5 @@
 .wrapper {
   text-align: center;
-  margin: 0 auto;
 }
 
 .input-todo,
@@ -8,4 +7,41 @@
   width: max-content;
   /* 수평 중앙 정렬 */
   margin: 0 auto;
+}
+
+.show-todo #todo-list {
+  width: 400px;
+  height: 300px;
+  border: 1px solid #000;
+  overflow: auto;
+}
+
+.show-todo ul li {
+  height: 40px;
+  text-align: left;
+  padding: 5px;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.show-todo ul li span {
+  display: inline-block;
+  width: 300px;
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.show-todo ul li button {
+  border: 0;
+  background: #fff;
+  position: absolute;
+  right: 5px;
+}
+
+.show-todo ul li button:hover {
+  transform: rotate(180deg);
+  transition: all 0.2s;
 }
