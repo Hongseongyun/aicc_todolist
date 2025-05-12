@@ -96,25 +96,50 @@ div > form > button:hover:after {
 }
 
 .show-todo #todo-list {
-  width: 400px;
+  width: 420px;
   height: 300px;
   border: 1px solid #000;
   overflow: auto;
   margin-top: 40px;
+  padding: 10px;
+}
+
+.show-todo ul {
+  counter-reset: li 0;
 }
 
 .show-todo ul li {
-  height: 40px;
+  position: relative; /* Create a positioning context */
+  list-style: none; /* Disable the normal item numbering */
+  margin: 1rem 0 1rem 2rem;
+  padding: 0 0 0 1rem;
   text-align: left;
-  padding: 5px;
-  display: flex;
-  position: relative;
-  align-items: center;
+}
+
+.show-todo ul li:before {
+  counter-increment: li 1; /* Increment the counter by 1 */
+  content: counter(li); /* Use the counter as content */
+  /* Position and style the number */
+  position: absolute;
+  top: -0.3em; /* move numbers up or down as needed */
+  left: -0.9em;
+  width: 1em;
+  text-align: center;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 2em;
+  font-weight: bold;
+  font-weight: 700;
+  color: #a8caba;
+  text-shadow: 3px 3px 0 #838689, -1px -1px 0 #838689, 1px -1px 0 #838689,
+    -1px 1px 0 #838689, 1px 1px 0 #838689;
 }
 
 .show-todo ul li span {
   display: inline-block;
   width: 300px;
+  height: 30px;
   padding: 5px;
   white-space: nowrap;
   overflow: hidden;
@@ -126,6 +151,7 @@ div > form > button:hover:after {
   background: #fff;
   position: absolute;
   right: 5px;
+  padding-left: 10px;
 }
 
 .show-todo ul li button:hover {
