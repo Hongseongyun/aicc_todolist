@@ -2,6 +2,92 @@
   text-align: center;
 }
 
+h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 300;
+  color: #222;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 27px 0;
+  grid-gap: 20px;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+h1:after,
+h1:before {
+  content: ' ';
+  display: block;
+  border-bottom: 1px solid #c50000;
+  border-top: 1px solid #c50000;
+  height: 5px;
+  background-color: #f8f8f8;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+div > form > input {
+  width: 360px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+}
+
+div > form > button {
+  position: relative;
+  color: #000;
+  z-index: 2;
+  width: 40px;
+  line-height: 25px;
+  padding: 0;
+  background: #fff;
+  margin-left: 20px;
+}
+div > form > button {
+  border: none;
+}
+div > form > button:before,
+div > form > button:after {
+  position: absolute;
+  content: '';
+  width: 0%;
+  height: 0%;
+  border: 2px solid;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+div > form > button:before {
+  top: 0;
+  left: 0;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-top-color: #000;
+  border-left-color: #000;
+}
+div > form > button:after {
+  bottom: 0;
+  right: 0;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: #000;
+  border-right-color: #000;
+}
+div > form > button:hover:before,
+div > form > button:hover:after {
+  border-color: #000;
+  height: 100%;
+  width: 100%;
+}
+
 .input-todo,
 .show-todo {
   width: max-content;
@@ -14,6 +100,7 @@
   height: 300px;
   border: 1px solid #000;
   overflow: auto;
+  margin-top: 40px;
 }
 
 .show-todo ul li {
