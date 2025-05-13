@@ -44,10 +44,16 @@ function paintToDo(newTodo) {
   const button = document.createElement('button');
   button.innerText = '❌';
   button.addEventListener('click', deleteToDo);
+  const button_more = document.createElement('button_more');
   // todo-list의 자식으로 li를, li의 자식으로 span, button 생성
   li.appendChild(span);
   li.appendChild(button);
   toDoList.appendChild(li);
+  if (newTodo.text.length > 19) {
+    li.appendChild(button_more);
+    button_more.innerText = '더보기';
+    button_more.addEventListener('click');
+  }
 }
 
 function handleToDoSubmit(event) {

@@ -96,7 +96,7 @@ div > form > button:hover:after {
 }
 
 .show-todo #todo-list {
-  width: 420px;
+  width: 450px;
   height: 300px;
   border: 1px solid #000;
   overflow: auto;
@@ -156,5 +156,13 @@ div > form > button:hover:after {
 
 .show-todo ul li button:hover {
   transform: rotate(180deg);
+  right: 1.4px;
+  top: 1.5px;
   transition: all 0.2s;
+}
+
+.show-todo ul li button_more {
+  font-size: 12px;
+  border: #000 solid 1px;
+  padding: 2px;
 }
