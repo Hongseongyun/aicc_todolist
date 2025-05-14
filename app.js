@@ -52,8 +52,11 @@ function paintToDo(newTodo) {
   if (newTodo.text.length > 19) {
     li.appendChild(button_more);
     button_more.innerText = '더보기';
-    button_more.addEventListener('click');
   }
+  button_more.addEventListener('click', () => {
+    const overflow = document.querySelector('span');
+    overflow.overflow = 'auto';
+  }); // 클릭시 가려진 부분 보여주기 구현
 }
 
 function handleToDoSubmit(event) {
